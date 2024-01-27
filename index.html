@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="search">
+            <label>
+                <input type="text" placeholder="Enter the city" spellcheck="false">
+            </label>
+            <button><img src="images/search.png" alt="search_icon"></button>
+        </div>
+        <div class="error">
+            <p>Invalid city name</p>
+        </div>
+        <div class="weather">
+            <h3 class="description">description</h3>
+            <img class="weather-icon" src="images/rain.png" alt="rain">
+            <h1 class="temp">temperature</h1>
+            <p class="feels-like_temp">feels like temperature</p>
+            <h2 class="country_code">country code</h2>
+            <h2 class="city">city name</h2>
+            <p class="coordinates">coordinates</p>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png" alt="humidity-icon">
+                    <div>
+                        <p class="humidity">x%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png" alt="wind-icon">
+                    <div>
+                        <p class="wind">x km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/pressure.png" alt="pressure-icon">
+                    <div>
+                        <p class="pressure">x km/h</p>
+                        <p>Pressure</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+</div>
+
+<script src="myJS.js"></script>
+</body>
+</html>

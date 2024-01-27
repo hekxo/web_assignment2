@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("https://wallpapercave.com/wp/wp12401642.jpg");
+}
+
+.container {
+    display: flex;
+}
+
+.card {
+    flex: 1;
+    margin-right: 10px;
+    width: 60%;
+    max-width: 450px;
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: white;
+    margin-left: 170px;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+}
+
+.search {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    color: #555;
+    padding: 10px 45px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.search button {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.search button img {
+    width: 16px;
+}
+
+.description {
+    margin-top: 40px;
+    font-size: 40px;
+    font-family: Georgia, sans-serif;
+}
+
+.weather-icon {
+    width: 180px;
+    margin-top: 30px;
+}
+
+.weather h1 {
+    font-size: 80px;
+    font-weight: 500;
+}
+
+.weather p {
+    font-size: 20px;
+}
+
+.weather h2 {
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: 5px;
+    display: inline;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    margin-top: 50px;
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.col img {
+    width: 30px;
+    margin-right: 5px;
+}
+
+.col p {
+    margin-top: 2px;
+}
+
+.humidity, .wind, .pressure {
+    font-size: 28px;
+    margin-top: -6px;
+}
+
+.weather {
+    display: none;
+}
+
+.error {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
+
+#map {
+    flex: 1;
+    margin-top: 100px;
+    height: 550px;
+    width: 150px;
+}
