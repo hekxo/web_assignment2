@@ -10,6 +10,12 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossorigin=""></script>
+
+    <style>
+        #space {
+            margin: 150px;
+        }
+    </style>
 </head>
 
 <body>
@@ -58,8 +64,25 @@
             </div>
         </div>
     </div>
-
     <div id="map"></div>
+    <div id="currentTime"></div>
+</div>
+
+<div class="rest-api">
+    <div class="container1">
+        <div class="search-wrapper">
+            <input type="text" id="country-inp" placeholder="Enter a country name here..."/>
+            <button id="search-btn">Search</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+</div>
+
+
+<div id="space"></div>
+<div id="footer">
+    <p>Sagandykov Ramin</p>
 </div>
 
 <script src="myJS.js"></script>

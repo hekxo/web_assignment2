@@ -12,7 +12,59 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+
+let searchBtn1 = document.getElementById("search-btn");
+let countryInp = document.getElementById("country-inp");
+searchBtn1.addEventListener("click", () => {
+    let countryName = countryInp.value;
+    let finalURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
+    console.log(finalURL);
+    fetch(finalURL).then((response) => response.json()).then((data)=> {
+        result.innerHTML = `<img src="${data[0].flags.svg}" class="flag-img" alt="flag-img">
+        <h2>${data[0].name.common}</h2>
+        <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Capital:</h4>
+                <span>${data[0].capital[0]}</span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Continent:</h4>
+                <span>${data[0].continents[0]}</span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Population:</h4>
+                <span>${data[0].population}</span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Currency:</h4>
+                <span>
+                    ${data[0].currencies[Object.keys(data[0].currencies)].name} - ${Object.keys(data[0].currencies)[0]}
+                </span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Common Languages:</h4>
+                <span>${Object.values(data[0].languages).toString().split(",").join(", ")}</span>
+            </div>
+        </div>`
+    }).catch(()=> {
+        if (countryName.length === 0) {
+            result.innerHTML = `<h3>The input field cannot be empty</h3>`;
+        } else {
+            result.innerHTML = `<h3>Please enter a valid country name</h3>`;
+        }
+    })
+});
+
 let marker;
+let data;
 async function checkWeather(city) {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
 
@@ -20,9 +72,9 @@ async function checkWeather(city) {
         document.querySelector(".error").style.display = "block";
         document.querySelector(".weather").style.display = "none";
         document.querySelector("#map").style.display = "none";
+        document.querySelector("#currentTime").style.display = "none";
     } else {
-        let data = await response.json();
-
+        data = await response.json();
         console.log(data);
 
         document.querySelector(".city").innerHTML = data.name;
@@ -64,10 +116,47 @@ async function checkWeather(city) {
         document.querySelector(".weather").style.display = "block";
         document.querySelector(".error").style.display = "none";
         document.querySelector("#map").style.display = "block";
+        document.querySelector("#currentTime").style.display = "block";
     }
  }
 
-searchBtn.addEventListener("click", ()=>{
-    checkWeather(searchBox.value);
-})
+let timeInterval;
+searchBtn.addEventListener("click", async () => {
+    if (timeInterval) {
+        clearInterval(timeInterval);
+    }
+
+    await checkWeather(searchBox.value);
+    const cityName = searchBox.value;
+    await updateCurrentTime(cityName);
+
+    timeInterval = setInterval(async () => {
+        await updateCurrentTime(cityName);
+    }, 1000);
+});
+
+async function updateCurrentTime(cityName) {
+    try {
+        const response = await fetch(`${apiUrl}${cityName}&appid=${apiKey}`);
+        const weatherData = await response.json();
+        const timezoneOffsetSeconds = weatherData.timezone;
+
+        const currentTimeUTC = new Date(Date.now() + timezoneOffsetSeconds * 1000);
+
+        const currentTimeLocal = new Date(currentTimeUTC.getTime() + currentTimeUTC.getTimezoneOffset() * 60000);
+
+        const formattedTime = currentTimeLocal.toLocaleTimeString();
+
+        document.getElementById('currentTime').textContent = `Current time in ${cityName}: ${formattedTime}`;
+    } catch (error) {
+        console.error('Error fetching current time:', error);
+        document.getElementById('currentTime').textContent = 'Error fetching current time';
+    }
+}
+
+
+
+
+
+
 
