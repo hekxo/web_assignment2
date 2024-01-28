@@ -13,5 +13,6 @@
     <orderEntry type="library" name="mapbox-gl-geocoder" level="application" />
     <orderEntry type="library" name="mapbox-gl" level="application" />
     <orderEntry type="library" name="moment.js" level="application" />
+    <orderEntry type="library" name="leaflet" level="application" />
   </component>
 </module>

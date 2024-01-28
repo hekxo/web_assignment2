@@ -138,37 +138,6 @@ async function checkWeather(city) {
         document.querySelector("#currentTime").style.display = "block";
     }
  }
-
-let timeInterval;
 searchBtn.addEventListener("click", async () => {
-    if (timeInterval) {
-        clearInterval(timeInterval);
-    }
-
     await checkWeather(searchBox.value);
-    const cityName = searchBox.value;
-    await updateCurrentTime(cityName);
-
-    timeInterval = setInterval(async () => {
-        await updateCurrentTime(cityName);
-    }, 1000);
 });
-
-async function updateCurrentTime(cityName) {
-    try {
-        const response = await fetch(`${apiUrl}${cityName}&appid=${apiKey}`);
-        const weatherData = await response.json();
-        const timezoneOffsetSeconds = weatherData.timezone;
-
-        const currentTimeUTC = new Date(Date.now() + timezoneOffsetSeconds * 1000);
-
-        const currentTimeLocal = new Date(currentTimeUTC.getTime() + currentTimeUTC.getTimezoneOffset() * 60000);
-
-        const formattedTime = currentTimeLocal.toLocaleTimeString();
-
-        document.getElementById('currentTime').textContent = `Current time in ${cityName}: ${formattedTime}`;
-    } catch (error) {
-        console.error('Error fetching current time:', error);
-        document.getElementById('currentTime').textContent = 'Error fetching current time';
-    }
-}
