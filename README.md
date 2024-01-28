@@ -1,6 +1,6 @@
 # ADDITIONAL API's SETUP INSTRUCTIONS:
-# 'Rest Countries' and 'Quotable' API Documentation
-This document provides comprehensive documentation for using the Rest Countries API and the Quotable API.
+# Rest Countries, Quotable, and OpenStreetMap API Documentation
+This document provides comprehensive documentation for using the Rest Countries API, the Quotable API, and the OpenStreetMap API.
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -11,7 +11,10 @@ This document provides comprehensive documentation for using the Rest Countries 
 4. [Quotable API](#quotable-api)
     - [API Usage](#api-usage-1)
     - [Design Decisions](#design-decisions-1)
-5. [Conclusion](#conclusion)
+5. [OpenStreetMap API](#openstreetmap-api)
+    - [API Usage](#api-usage-2)
+    - [Design Decisions](#design-decisions-2)
+6. [Conclusion](#conclusion)
 
 ## <a name="introduction">Introduction
 Both the Rest Countries API and the Quotable API provide valuable data for various applications. The Rest Countries API offers information about countries, including details like name, capital, population, languages, etc. On the other hand, the Quotable API provides a collection of quotes from famous individuals.
@@ -49,6 +52,21 @@ The Quotable API offers endpoints to fetch quotes from famous individuals. Here'
 - **Simple Endpoint Structure:** The API has a straightforward endpoint structure, making it easy to understand and use.
 - **Rate Limiting:** Implementing rate limiting prevents abuse of the API and ensures fair usage for all consumers.
 
+## <a name="openstreetmap-api">OpenStreetMap API
+
+### <a name="api-usage-2">API Usage
+The OpenStreetMap API provides access to open-source map data. Here's how you can use it:
+
+1. **Geocoding:** Use the `/geocode` endpoint to convert addresses into geographic coordinates (latitude and longitude).
+2. **Reverse Geocoding:** The `/reverse-geocode` endpoint allows you to convert coordinates into human-readable addresses.
+3. **Routing:** Plan routes between locations using the `/route` endpoint.
+4. **Map Rendering:** Render custom maps using the `/map` endpoint.
+
+### <a name="design-decisions-2">Design Decisions
+- **Open Data:** OpenStreetMap provides free, editable map data, which promotes collaboration and community-driven improvements.
+- **Customizability:** The API offers various endpoints for different purposes, allowing developers to tailor their applications according to their needs.
+- **Community Support:** Being an open project, OpenStreetMap enjoys support from a large community of contributors, ensuring the accuracy and reliability of the data.
+- 
 ## <a name="conclusion">Conclusion
-The Rest Countries API and Quotable API offer valuable data for various applications, from geographical information to inspirational quotes. By following the setup instructions and understanding the API usage details provided in this document, developers can effectively integrate these APIs into their projects.
+The Rest Countries API, Quotable API, and OpenStreetMap API offer valuable resources for developers to build diverse applications. By following the setup instructions and understanding the API usage details provided in this document, developers can effectively integrate these APIs into their projects.
 
