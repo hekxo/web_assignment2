@@ -30,6 +30,7 @@
           <option value="http://tiles.apache.org/" />
           <option value="http://www.openstreetmap.org" />
           <option value="http://worldtimeapi.org" />
+          <option value="http://api.timezonedb.com" />
         </list>
       </option>
     </inspection_tool>
